@@ -1,17 +1,28 @@
-repo_token: VgVhiZM0APBpIJ6heD6plPwnZNbErBstG
 version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
-
-    steps:
+      # specify the version you desire here
+      - image: circleci/node:7.10
+  steps:
       - checkout
-
+      - restore_cache: # special step to restore the dependency cache
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: Greeting
-          command: echo Hello, world.
-
+          name: Setup Dependencies
+          command: npm install
       - run:
-          name: Print the Current Time
-          command: date
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - save_cache: # special step to save the dependency cache
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run: # run tests
+          name: coveralls
+          command: |
+            ./cc-test-reporter before-build
+            npm test -- -u
+            ./cc-test-reporter after-build --exit-code $?
