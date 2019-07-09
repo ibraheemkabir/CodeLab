@@ -1,17 +1,27 @@
-repo_token: VgVhiZM0APBpIJ6heD6plPwnZNbErBstG
 version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: circleci/node:12.4.0
 
+    environment:
+      CC_TEST_REPORTER_ID: d6dbbee955798ca46de4d522a169f32548a7a9dd1ec8720af21ff13aaa09ea33
     steps:
       - checkout
-
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: Greeting
-          command: echo Hello, world.
-
+          name: Setup Dependencies
+          command: npm install
       - run:
-          name: Print the Current Time
-          command: date
+          name: Setup Code Climate test-reporter
+          command: |
+            # download test reporter as a static binary
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - run:
+          name: test coverage
+          command: |
+            ./cc-test-reporter before-build
+            npm test -- -u
+            ./cc-test-reporter after-build --exit-code $?

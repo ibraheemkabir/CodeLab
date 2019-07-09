@@ -6,7 +6,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest --watchAll"
+    "test": "jest --coverage -u",
+    "test:coverage": "jest --collectCoverage -u",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "jest": {
     "preset": "jest-expo"
@@ -28,7 +30,8 @@
   },
   "devDependencies": {
     "babel-preset-expo": "^5.1.0",
-    "jest-expo": "^33.0.0"
+    "jest-expo": "^33.0.2",
+    "react-test-renderer": "^16.8.6"
   },
   "private": true
 }
