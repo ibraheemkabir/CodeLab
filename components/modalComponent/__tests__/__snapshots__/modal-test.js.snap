@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Modal
+  animationType="slide"
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={true}
+>
+  <View
+    style={
+      Object {
+        "alignContent": "center",
+        "alignItems": "center",
+        "flex": 1,
+        "height": 30,
+        "justifyContent": "center",
+        "marginTop": 22,
+        "shadowColor": "black",
+        "shadowOffset": Object {
+          "height": -5,
+        },
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignContent": "center",
+          "alignItems": "center",
+          "backgroundColor": "white",
+          "flexDirection": "column",
+          "height": 170,
+          "justifyContent": "center",
+          "shadowColor": "black",
+          "shadowOffset": Object {
+            "height": -5,
+          },
+          "shadowOpacity": 1,
+          "width": 400,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={null}
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+                "fontFamily": "System",
+                "fontSize": 16,
+              },
+              null,
+            ]
+          }
+          uppercase={false}
+        >
+          Hide Modal
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 100,
+              "width": 100,
+            }
+          }
+        />
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 100,
+              "width": 100,
+            }
+          }
+        />
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 100,
+              "width": 100,
+            }
+          }
+        />
+      </View>
+    </View>
+  </View>
+</Modal>
+`;
