@@ -7,7 +7,7 @@ import Lists from '../../components/listComponent/List'
 
 export default class LinksScreen extends Component {
   static navigationOptions = ({ navigation }) => {
-    const some = navigation.getParam('setModalVisibles')
+    const searchVisibility = navigation.getParam('setModalVisibles')
     return {
       title: 'CodeLab',
       headerStyle: {
@@ -23,7 +23,7 @@ export default class LinksScreen extends Component {
           type="FontAwesome"
           name="search"
           style={{ fontSize: 25, paddingRight: 10, color: 'white' }}
-          onPress={()=>some(true)}
+          onPress={() => searchVisibility(true)}
         />
       ),
     }
@@ -47,14 +47,17 @@ export default class LinksScreen extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
+        <View style={styles.title}>
+          <Text style={styles.optionsTitleText}>Developers in Lagos, Nigeria</Text>
+        </View>
+        <ScrollView style={styles.container}>
+          <Lists navigation={navigate} />
+        </ScrollView>
         <Modal
           animationType="slide"
           transparent={true}
           visible={this.state.modalVisible}
-          onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-          }}>
-
+        >
           <View
             style={{
               flex: 1, marginTop: 22, height: 20, justifyContent: 'center', alignContent: 'center', alignItems: 'center', borderStyle: 'solid', borderColor: 'black'
@@ -86,7 +89,9 @@ export default class LinksScreen extends Component {
                 <TouchableHighlight
                   onPress={() => {
                     this.setModalVisible(!this.state.modalVisible);
-                  }}>
+                  }}
+                  style={{}}
+                >
                   <Icon name='close' />
                 </TouchableHighlight>
               </View>
@@ -97,12 +102,6 @@ export default class LinksScreen extends Component {
             </View>
           </View>
         </Modal>
-        <View style={styles.title}>
-          <Text style={styles.optionsTitleText}>Developers in Lagos, Nigeria</Text>
-        </View>
-        <ScrollView style={styles.container}>
-          <Lists navigation={navigate} setModalVisible={this.setModalVisible} modalVisible={this.state.modalVisible}/>
-        </ScrollView>
       </View>
     );
   }

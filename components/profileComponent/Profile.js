@@ -61,7 +61,7 @@ export default class CardImageExample extends Component {
 				<View style={{ marginTop: 30, alignItems: 'center', textAlign: 'center' }}>
 					<View style={{ alignItems: 'center', textAlign: 'center', flexDirection: 'row',margin: 10}}>
 						<Text style={{ fontSize: 20, fontFamily: 'roboto', letterSpacing: 1, fontWeight: '400', color: '#8492A6' }}>
-							<Text style={{ fontSize: 20, fontWeight: '700', color: '#47525E'}}>2390</Text>  followers
+							<Text style={{ fontSize: 20, fontWeight: '700', color: '#47525E'}}>2390</Text>  following
 							</Text>
 						<Text style={{ fontSize: 15, fontFamily: 'roboto', fontWeight: '400', color: '#47525E',justifyContent: 'space-around',padding: 10 }}>
 						|

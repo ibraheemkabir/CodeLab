@@ -3,8 +3,15 @@ import renderer from 'react-test-renderer';
 
 import Home from '../HomeScreen';
 
+
 it(`renders correctly`, () => {
-  const home = renderer.create(<Home/>);
+  let props = {
+    navigation: {
+      navigate: jest.fn(),
+      setParams: jest.fn()
+    },
+  }
+  const home = renderer.create(<Home {...props}/>);
 
   expect(home).toMatchSnapshot();
 });

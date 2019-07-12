@@ -1,10 +1,19 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+Enzyme.configure({ adapter: new Adapter() });
+import {shallow} from 'enzyme'
 
 import List from '../ListScreen';
 
 it(`renders correctly`, () => {
-  const list = renderer.create(<List/>);
+  let props = {
+    navigation: {
+      navigate: jest.fn(),
+      setParams: jest.fn()
+    },
+  }
+  const list = shallow(<List {...props}/>);
 
   expect(list).toMatchSnapshot();
 });

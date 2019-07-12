@@ -250,7 +250,7 @@ exports[`renders correctly 1`] = `
         >
           2390
         </Text>
-          followers
+          following
       </Text>
       <Text
         style={
