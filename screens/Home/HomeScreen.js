@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
+import { graphql } from 'react-apollo'
 import { Container, Icon, Title, Content, Item, Input, Button } from 'native-base';
+import gql from 'graphql-tag';
+
+export const FEED_QUERY = gql`
+	query FeedQuery {
+		authors {
+			name
+			books{
+				name
+			}
+		}
+	}
+`;
 
 class LogoTitle extends React.Component {
 	render() {
@@ -11,7 +24,7 @@ class LogoTitle extends React.Component {
 		);
 	}
 }
-export default class HomeScreen extends Component {
+class HomeScreen extends Component {
 	static navigationOptions = {
 		headerTitle: <LogoTitle />,
 		headerStyle: {
@@ -20,6 +33,7 @@ export default class HomeScreen extends Component {
 	};
 
 	render() {
+		console.log(this.props.feedQuery)
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>
@@ -76,3 +90,10 @@ const styles = StyleSheet.create({
 		backgroundColor: '#E18D96'
 	}
 })
+
+export default graphql(FEED_QUERY, {
+	name: 'feedQuery', // name of the injected prop: this.props.feedQuery...
+	options: {
+		fetchPolicy: 'network-only',
+	},
+})(HomeScreen)

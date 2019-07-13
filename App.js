@@ -4,14 +4,19 @@ import * as Font from 'expo-font';
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { AsyncStorage } from 'react-native';
+import { ApolloProvider } from 'react-apollo';
+import makeApolloClient from './apollo';
 
 import AppNavigator from './navigation/AppNavigator';
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
-    setLoadingComplete: false
+    setLoadingComplete: false,
+    client: null
   };
+
 
   componentWillMount = async () => {
     await Expo.Font.loadAsync({
@@ -23,6 +28,7 @@ export default class App extends React.Component {
   }
 
   render() {
+    const client = makeApolloClient();
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
@@ -33,10 +39,12 @@ export default class App extends React.Component {
       );
     } else {
       return (
+        <ApolloProvider client={client}>
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           <AppNavigator />
         </View>
+        </ApolloProvider> 
       );
     }
   }
