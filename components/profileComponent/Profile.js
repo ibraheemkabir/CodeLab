@@ -4,12 +4,12 @@ import { Card, CardItem,Button,Icon } from 'native-base';
 
 export default class CardImageExample extends Component {
 	render() {
-		const { navigate } = this.props
+		const { navigate,data } = this.props
 		return (
 				<View>
 					<Card>
 						<CardItem cardBody style={{flexDirection: 'row',width: null}}>
-							<Image source={require('../../assets/images/avatar.jpg')} style={{ height: 380, width: null, flex: 1 }} />
+						<Image source={{ uri: data.node.avatarUrl }} style={{ height: 380, width: null, flex: 1 }} />
 						</CardItem>
 					<View style={{
 						flex: 1, alignItems: 'center', justifyContent: 'center', position: 'absolute', width: 410, backgroundColor: 'rgba(0, 0, 0, 0.85)'}}>
@@ -38,7 +38,7 @@ export default class CardImageExample extends Component {
 									alignItems: 'center',
 									justifyContent: 'center',
 							}}>
-							<Image source={require('../../assets/images/avatar.jpg')} style={{ height: 150, width: 150, flex: 1 , marginTop: -80}} />
+							<Image source={{ uri: data.node.avatarUrl}} style={{ height: 150, width: 150, flex: 1 , marginTop: -80}} />
 							</CardItem>
 						</View>
 					<View>
@@ -48,28 +48,28 @@ export default class CardImageExample extends Component {
 					<View style={{ alignItems:'flex-end' }}>
 						<Text style={{
 							fontSize: 22, fontFamily: 'roboto', fontWeight: '600', color: '#47525E', marginTop: -50, paddingRight: 25}}>
-							<Icon type="FontAwesome" name="external-link" style={{ fontSize: 35, color:'#A02C2D'}} onPress={()=>navigate('Web')}/>							
+							<Icon name="home" type='FontAwesome5' style={{ fontSize: 35, color:'#A02C2D'}} onPress={()=>navigate('Web',{login: data.node.login})}/>							
 					</Text>
 				</View>
 				<View style={{ alignItems:'center',textAlign:'center'}}>
 					<Text style={{ fontSize: 22, fontFamily: 'roboto', fontWeight: '600', color: '#47525E'}}>
-							Brendan Moore
+							{data.node.name}
 						</Text>
 					<Text style={{ fontSize: 20, fontFamily: 'roboto', fontWeight: '400', color: '#47525E',marginTop: 15 }}>
-						CTO at Marvel Prototyping
+							{data.node.bio}
 						</Text>
 				</View>
 				</View>
 				<View style={{ marginTop: 30, alignItems: 'center', textAlign: 'center' }}>
 					<View style={{ alignItems: 'center', textAlign: 'center', flexDirection: 'row',margin: 10}}>
 						<Text style={{ fontSize: 20, fontFamily: 'roboto', letterSpacing: 1, fontWeight: '400', color: '#8492A6' }}>
-							<Text style={{ fontSize: 20, fontWeight: '700', color: '#47525E'}}>2390</Text>  following
+							<Text style={{ fontSize: 20, fontWeight: '700', color: '#47525E' }}>{data.node.following.totalCount}</Text>  following
 							</Text>
 						<Text style={{ fontSize: 15, fontFamily: 'roboto', fontWeight: '400', color: '#47525E',justifyContent: 'space-around',padding: 10 }}>
 						|
 						</Text>
 						<Text style={{ fontSize: 20, fontFamily: 'roboto', letterSpacing: 1, fontWeight: '400', color: '#8492A6'}}>
-							<Text style={{ fontSize: 20, fontWeight: '700', color: '#47525E'}}>2390</Text>  Stars
+							<Text style={{ fontSize: 20, fontWeight: '700', color: '#47525E' }}>{data.node.starredRepositories.totalCount}</Text>  Stars
 							</Text>
 					</View>
 				</View>
@@ -89,7 +89,7 @@ export default class CardImageExample extends Component {
 						}}>
 						<Button style={styles.button}>
 							<Text style={styles.btnText}>
-								123
+								{data.node.repositories.totalCount}
 									</Text>
 							<Text style={styles.minibtnText}>
 								Repositories
@@ -97,7 +97,7 @@ export default class CardImageExample extends Component {
 						</Button>
 						<Button style={styles.button}>
 							<Text style={styles.btnText}>
-								58
+								{data.node.followers.totalCount}
 									</Text>
 							<Text style={styles.minibtnText}>
 								Followers

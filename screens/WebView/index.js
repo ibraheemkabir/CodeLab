@@ -11,9 +11,10 @@ export default class MyWeb extends Component {
 	};
 
 	render() {
+		const data = this.props.navigation.getParam('login')
 		return (
 			<WebView
-				source={{ uri: 'https://github.com/ibraheemkabir' }}
+				source={{ uri: `https://github.com/${data}` }}
 			/>
 		);
 	}

@@ -1,53 +1,86 @@
 import React,{Component} from 'react';
-import { ScrollView, StyleSheet,Text, View,Modal,TouchableHighlight,Image} from 'react-native';
+import { ScrollView, StyleSheet,Text, View,Modal,TouchableHighlight,Image,AsyncStorage} from 'react-native';
 import { graphql } from 'react-apollo'
 import { Item, Input,Icon } from 'native-base';
 import gql from 'graphql-tag';
 import Lists from '../../components/listComponent/List'
 
-export const FEED_QUERY = gql`
-	 query {
-    viewer {
-      avatarUrl
+
+export const DevelopersList = gql`
+{
+  search(query: "location:lagos", type: USER, first: 100) {
+		userCount,
+    edges {
+      node {
+        ... on User {
+          name
+          login
+          bio
+          email
+          location
+          avatarUrl
+          createdAt
+          starredRepositories {
+              totalCount
+          }
+          repositories{
+          totalCount
+          }
+          followers{
+            totalCount
+          }
+          following{
+            totalCount
+          }
+        }
+      }
     }
   }
+}
 `;
 
 class LinksScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     let viewer = 'https://facebook.github.io/react/logo-og.png'
-    const itemId = navigation.getParam('itemId', 'NO-ID');
+    const itemId = navigation.getParam('itemId');
     if (itemId !== null) {
       viewer = itemId.avatarUrl
     } 
     const searchVisibility = navigation.getParam('setModalVisibles');
+    const signOut = navigation.getParam('signOut');
     return {
       title: 'CodeLab',
       headerStyle: {
         backgroundColor: '#A02C2D',
         color: '#ffffff'
       },
-      headerBackImage: (
-        <Image
-          source={{ url: viewer, width: 30, height: 30 }}
-          style={{ marginLeft: 15, borderRadius: 15 }}
-        />
-      ),
       headerTitleStyle: {
         color: '#ffffff'
       },
       headerTintColor: 'white',
       headerRight: (
-        (<Icon name="share-alt" size={30} color="#900" 
-        onPress={() => searchVisibility(true)}
-       />)
+        <Icon type="FontAwesome" name="share" style={{ fontSize: 25,paddingRight: 10, color: '#ffffff' }} 
+          onPress={() => searchVisibility(true)} />
+      ),
+      headerLeft: (
+        <TouchableHighlight
+          onPress={() => signOut()}
+          underlayColor={'#444444'}
+        >
+          <Image
+            source={{ url: viewer, width: 30, height: 30 }}
+            style={{ marginLeft: 15, borderRadius: 15 }}
+            
+          />        
+        </TouchableHighlight >
       ),
     }
   };
 
   state = {
     modalVisible: false,
-    Url: '../../assets/images/robot-dev.png'
+    Url: '../../assets/images/robot-dev.png',
+    data: []
   };
 
   
@@ -55,31 +88,54 @@ class LinksScreen extends Component {
     this.setState({ modalVisible: visible });
   }
 
-  setIcon(itemId){
-    this.setState({ Url: itemId.avatarUrl })
-  }
-  
+  _signOutAsync = async () => {
+    try {
+      await AsyncStorage.removeItem('GithubStorageKey')
+      this.props.navigation.navigate('Main')
+    } catch (error) {
+      // Error retrieving data
+      console.log(error.message);
+    }
+  };
+
   componentWillMount(){
-    this.props.navigation.setParams({ setModalVisibles: this.setModalVisible});
+    this.props.navigation.setParams({ setModalVisibles: this.setModalVisible,signOut: this._signOutAsync});
+  }
+
+  componentDidUpdate(prevProps){
+   
+    if (this.props.Developers.loading !== prevProps.Developers.loading){
+      if (this.props.Developers.search){
+        this.setState({ data: this.props.Developers.search.edges })
+      }
+    }
+  }
+
+  filter(text){
+    const developers = this.props.Developers.search.edges;
+    const filter = developers.filter(data=> data.node.name.includes(text))
+    this.setState({
+      data: filter
+    })
   }
 
   render(){
     const { navigate } = this.props.navigation;
-    let viewer = 'https://facebook.github.io/react/logo-og.png'
-    const itemId = this.props.navigation.getParam('itemId', 'NO-ID');
-    if(itemId!==null){
-      viewer = itemId.avatarUrl
-    } 
     return (
       <View style={styles.container}>
         <View style={styles.title}>
           <Text style={styles.optionsTitleText}>Developers in Lagos, Nigeria</Text>
         </View>
         <ScrollView style={styles.container}>
-          <Lists navigation={navigate} data={this.props.feedQuery}/>
-          <Image source={{ uri: viewer }}
-            style={{ width: 400, height: 400 }} />
+          {
+            this.props.Developers.loading 
+              ? <View style={{ alignItems: 'center' }}><Text><Image source={require('../../assets/images/loading.gif')} /></Text></View>
+                : !this.props.Developers.search
+                ? <View style={{ alignItems: 'center' }}><Text style={styles.error}>Error Loading Developers...Check Network Connection</Text></View>
+              : <Lists navigation={navigate} data={this.state.data} />
+          }      
         </ScrollView>
+        
         <Modal
           animationType="slide"
           transparent={true}
@@ -119,11 +175,13 @@ class LinksScreen extends Component {
                   }}
                   style={{}}
                 >
-                  <Icon name='close' />
+                <Icon type="FontAwesome" name="close" style={{ fontSize: 25, paddingRight: 10, color: 'black' }}/>
                 </TouchableHighlight>
               </View>
               <Item style={{ marginTop: 10, margin: 30, paddingLeft: 20 }}>
-                <Input placeholder="Search" />
+                <Input placeholder="Search"
+                  onChangeText={(text) => this.filter(text)}
+                />
                 <Icon name="ios-search" />
               </Item>
             </View>
@@ -134,8 +192,8 @@ class LinksScreen extends Component {
   }
 }
 
-export default graphql(FEED_QUERY, {
-  name: 'feedQuery', // name of the injected prop: this.props.feedQuery...
+export default graphql(DevelopersList, {
+  name: 'Developers', // name of the injected prop: this.props.feedQuery...
   options: {
     fetchPolicy: 'network-only',
   },
@@ -160,5 +218,13 @@ const styles = StyleSheet.create({
       borderBottomWidth: StyleSheet.hairlineWidth,
       borderBottomColor: '#EDEDED',
       paddingBottom: 25
+    },
+    error: {
+      flex: 1,
+      fontSize: 12,
+      color: 'red',
+      justifyContent: "center",
+      alignContent: "center",
+      alignItems: 'center'
     }
 });

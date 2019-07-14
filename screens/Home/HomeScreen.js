@@ -6,21 +6,6 @@ import { AsyncStorage } from 'react-native';
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag';
 
-async function signInAsync(token) {
-	try {
-		if (!token) {
-			const token = await getGithubTokenAsync();
-			if (token) {
-				await AsyncStorage.setItem('GithubStorageKey', token);
-				return token;
-			}
-		}else{
-			return
-		}
-	} catch ({ message }) {
-		return message
-	}
-};
 
 export const FEED_QUERY = gql`
 	 query {
@@ -31,6 +16,7 @@ export const FEED_QUERY = gql`
 `;
 
 class LogoTitle extends React.Component {
+
 	render() {
 		return (
 			<View style={{ flex: 1, flexDirection: 'row', paddingLeft: 10}}>
@@ -46,42 +32,61 @@ class HomeScreen extends Component {
 			backgroundColor: '#A02C2D'
 		},
 		headerBackTitle: null,
-		headerBackImage: (<Image source={require('../../assets/images/avatar.jpg')}/>),
 	};
 
-	
+	state = {
+		loading: false
+	}
+	async signInAsync(token) {
+		this.setState({loading:true})
+		try {
+			if (!token) {
+				const token = await getGithubTokenAsync();
+				if (token) {
+					await AsyncStorage.setItem('GithubStorageKey', token);
+					this.setState({loading:false})
+					const viewer = this.props.feedQuery.viewer || null
+					this.props.navigation.navigate('List', {
+						itemId: viewer,
+					})
+					return token;
+				}
+			} else {
+				return
+			}
+		} catch ({ message }) {
+			return message
+		}
+	};
+
 	render() {
 		const { navigate } = this.props.navigation;
 		const viewer = this.props.feedQuery.viewer || null
 		const token = AsyncStorage.getItem('GithubStorageKey');
-		if (token) {
+		if (token!==null) {
 			navigate('List', {
 				itemId: viewer,
-				otherParam: 'anything you want here',
 			})
 		}
 		return (
 			<Container>
+				{
+					this.state.loading && <View style={{ alignItems: 'center',paddingTop: 10 }}><Text><Image source={require('../../assets/images/loading.gif')} /></Text></View>
+				}
 				<Content style={styles.content}>
 					<View style={styles.Image}>
 						<Image
 							source={require('../../assets/images/robot-dev.png')}
 							style={{marginBottom: 15}}
 						/>
-					</View>
-					<Item style={styles.Input}>
-						<Input placeholder="GitHub UserName" style={{ textAlign: 'left' }} />
-					</Item>
-					<Item style={styles.Input}>
-						<Input placeholder="GitHub Password" style={{ textAlign: 'left' }} />
-					</Item>
+					</View>					
 					<Button 
-					onPress={() => signInAsync()}
+					onPress={()=>this.signInAsync()}
 					style={{ flex: 1, justifyContent: 'center', alignContent: 'center', backgroundColor: '#E18D96'}}
 					>
 						<Text style={{
 							flex: 1, textAlign: 'center', fontWeight: 'bold', color: 'white' }}>
-							Login
+							Sign In with Github
 						</Text>
 					</Button>
 				</Content>

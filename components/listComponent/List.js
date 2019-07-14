@@ -1,167 +1,41 @@
 import React, { Component } from 'react';
-import {View,Image} from 'react-native';
 import { Container, Content } from 'native-base';
 import { List, ListItem, Left, Body, Right, Thumbnail, Text} from 'native-base';
 
 
 export default class ListAvatarExample extends Component {
 
+	state = {
+		data: this.props
+	}
+	
 	render() {
 		const { navigation,data } = this.props;
 		return (
 			<Container>
 				{
-					data.loading
-					? <View style={{alignItems:'center'}}><Text><Image source={require('../../assets/images/loading.gif')}/></Text></View>
-					: <Content>
+					data &&
+					<Content>
 							<List>
-								<ListItem
-									avatar
-									onPress={() => navigation('Profile')}
-								>
-									<Left>
-										<Thumbnail source={require('../../assets/images/robot-dev.png')} />
-									</Left>
-									<Body>
-										<Text>Kumar Pratik</Text>
-										<Text note>Doing what you like will always keep you happy . .</Text>
-									</Body>
-									<Right>
-										<Text note>3:43 pm</Text>
-									</Right>
-								</ListItem>
-								<ListItem avatar>
-									<Left>
-										<Thumbnail source={require('../../assets/images/robot-dev.png')} />
-									</Left>
-									<Body>
-										<Text>Kumar Pratik</Text>
-										<Text note>Doing what you like will always keep you happy . .</Text>
-									</Body>
-									<Right>
-										<Text note>3:43 pm</Text>
-									</Right>
-								</ListItem>
-								<ListItem avatar>
-									<Left>
-										<Thumbnail source={require('../../assets/images/robot-dev.png')} />
-									</Left>
-									<Body>
-										<Text>Kumar Pratik</Text>
-										<Text note>Doing what you like will always keep you happy . .</Text>
-									</Body>
-									<Right>
-										<Text note>3:43 pm</Text>
-									</Right>
-								</ListItem>
-								<ListItem avatar>
-									<Left>
-										<Thumbnail source={require('../../assets/images/robot-dev.png')} />
-									</Left>
-									<Body>
-										<Text>Kumar Pratik</Text>
-										<Text note>Doing what you like will always keep you happy . .</Text>
-									</Body>
-									<Right>
-										<Text note>3:43 pm</Text>
-									</Right>
-								</ListItem>
-								<ListItem avatar>
-									<Left>
-										<Thumbnail source={require('../../assets/images/robot-dev.png')} />
-									</Left>
-									<Body>
-										<Text>Kumar Pratik</Text>
-										<Text note>Doing what you like will always keep you happy . .</Text>
-									</Body>
-									<Right>
-										<Text note>3:43 pm</Text>
-									</Right>
-								</ListItem>
-								<ListItem avatar>
-									<Left>
-										<Thumbnail source={require('../../assets/images/robot-dev.png')} />
-									</Left>
-									<Body>
-										<Text>Kumar Pratik</Text>
-										<Text note>Doing what you like will always keep you happy . .</Text>
-									</Body>
-									<Right>
-										<Text note>3:43 pm</Text>
-									</Right>
-								</ListItem>
-								<ListItem avatar>
-									<Left>
-										<Thumbnail source={require('../..//assets/images/robot-dev.png')} />
-									</Left>
-									<Body>
-										<Text>Kumar Pratik</Text>
-										<Text note>Doing what you like will always keep you happy . .</Text>
-									</Body>
-									<Right>
-										<Text note>3:43 pm</Text>
-									</Right>
-								</ListItem>
-								<ListItem avatar>
-									<Left>
-										<Thumbnail source={require('../../assets/images/robot-dev.png')} />
-									</Left>
-									<Body>
-										<Text>Kumar Pratik</Text>
-										<Text note>Doing what you like will always keep you happy . .</Text>
-									</Body>
-									<Right>
-										<Text note>3:43 pm</Text>
-									</Right>
-								</ListItem>
-								<ListItem avatar>
-									<Left>
-										<Thumbnail source={require('../../assets/images/robot-dev.png')} />
-									</Left>
-									<Body>
-										<Text>Kumar Pratik</Text>
-										<Text note>Doing what you like will always keep you happy . .</Text>
-									</Body>
-									<Right>
-										<Text note>3:43 pm</Text>
-									</Right>
-								</ListItem>
-								<ListItem avatar>
-									<Left>
-										<Thumbnail source={require('../../assets/images/robot-dev.png')} />
-									</Left>
-									<Body>
-										<Text>Kumar Pratik</Text>
-										<Text note>Doing what you like will always keep you happy . .</Text>
-									</Body>
-									<Right>
-										<Text note>3:43 pm</Text>
-									</Right>
-								</ListItem>
-								<ListItem avatar>
-									<Left>
-										<Thumbnail source={require('../../assets/images/robot-dev.png')} />
-									</Left>
-									<Body>
-										<Text>Kumar Pratik</Text>
-										<Text note>Doing what you like will always keep you happy . .</Text>
-									</Body>
-									<Right>
-										<Text note>3:43 pm</Text>
-									</Right>
-								</ListItem>
-								<ListItem avatar>
-									<Left>
-										<Thumbnail source={require('../../assets/images/robot-dev.png')} />
-									</Left>
-									<Body>
-										<Text>Kumar Pratik</Text>
-										<Text note>Doing what you like will always keep you happy . .</Text>
-									</Body>
-									<Right>
-										<Text note>3:43 pm</Text>
-									</Right>
-								</ListItem>
+								{
+									data.map(data=>(
+										<ListItem
+											avatar
+											style={{}}
+											onPress={() => navigation('Profile',{
+												data
+											})}
+										>
+											<Left>
+												<Thumbnail source={{uri: data.node.avatarUrl}}/>
+											</Left>
+											<Body>
+												<Text>{data.node.name}</Text>
+												<Text note>{data.node.bio}</Text>
+											</Body>
+										</ListItem>
+									))
+								}
 							</List>
 						</Content>
 				}

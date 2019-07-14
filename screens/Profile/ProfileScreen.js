@@ -19,7 +19,7 @@ export default class SettingsScreen extends Component {
         },
         headerBackTitle:'Back to Profile',
         headerRight: (
-          <Icon type="FontAwesome" name="share-alt" style={{ fontSize: 25, paddingRight: 20, color: 'white' }} onPress={() => some(true)} />
+          <Icon type='MaterialIcons' name="build" style={{ fontSize: 25, paddingRight: 20, color: 'white' }} onPress={() => some(true)} />
         ),
         headerTitleStyle: {
           color: 'white',
@@ -41,10 +41,11 @@ export default class SettingsScreen extends Component {
 
   render(){
     const {navigate} = this.props.navigation
+    const data = this.props.navigation.getParam('data');
     return (
       <View style={{ marginTop: -60 }}>
         <Modal setModalVisible={this.setModalVisible} modalVisible={this.state.modalVisible}/>
-        <Profile navigate={navigate} />
+        <Profile navigate={navigate} data={data}/>
       </View>
     );
   }
