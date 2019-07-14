@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Image, View,StyleSheet,Text } from 'react-native';
 import { Card, CardItem,Button,Icon } from 'native-base';
+
 export default class CardImageExample extends Component {
 	render() {
+		const { navigate } = this.props
 		return (
 				<View>
 					<Card>
@@ -46,7 +48,7 @@ export default class CardImageExample extends Component {
 					<View style={{ alignItems:'flex-end' }}>
 						<Text style={{
 							fontSize: 22, fontFamily: 'roboto', fontWeight: '600', color: '#47525E', marginTop: -50, paddingRight: 25}}>
-							<Icon type="FontAwesome" name="external-link" style={{ fontSize: 35, color:'#A02C2D'}}/>							
+							<Icon type="FontAwesome" name="external-link" style={{ fontSize: 35, color:'#A02C2D'}} onPress={()=>navigate('Web')}/>							
 					</Text>
 				</View>
 				<View style={{ alignItems:'center',textAlign:'center'}}>
