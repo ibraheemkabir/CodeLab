@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
+import getGithubTokenAsync from '../../utils/githubAuth';
+import { Container, Title, Content, Item, Input, Button } from 'native-base';
+import { AsyncStorage } from 'react-native';
 import { graphql } from 'react-apollo'
-import { Container, Icon, Title, Content, Item, Input, Button } from 'native-base';
 import gql from 'graphql-tag';
 
-export const FEED_QUERY = gql`
-	query FeedQuery {
-		authors {
-			name
-			books{
-				name
+async function signInAsync(token) {
+	try {
+		if (!token) {
+			const token = await getGithubTokenAsync();
+			if (token) {
+				await AsyncStorage.setItem('GithubStorageKey', token);
+				return token;
 			}
+		}else{
+			return
 		}
+	} catch ({ message }) {
+		return message
 	}
+};
+
+export const FEED_QUERY = gql`
+	 query {
+    viewer {
+      avatarUrl
+    }
+  }
 `;
 
 class LogoTitle extends React.Component {
@@ -30,11 +45,21 @@ class HomeScreen extends Component {
 		headerStyle: {
 			backgroundColor: '#A02C2D'
 		},
+		headerBackTitle: null,
+		headerBackImage: (<Image source={require('../../assets/images/avatar.jpg')}/>),
 	};
 
+	
 	render() {
-		console.log(this.props.feedQuery)
 		const { navigate } = this.props.navigation;
+		const viewer = this.props.feedQuery.viewer || null
+		const token = AsyncStorage.getItem('GithubStorageKey');
+		if (token) {
+			navigate('List', {
+				itemId: viewer,
+				otherParam: 'anything you want here',
+			})
+		}
 		return (
 			<Container>
 				<Content style={styles.content}>
@@ -51,7 +76,7 @@ class HomeScreen extends Component {
 						<Input placeholder="GitHub Password" style={{ textAlign: 'left' }} />
 					</Item>
 					<Button 
-					onPress={() => navigate('List')}
+					onPress={() => signInAsync()}
 					style={{ flex: 1, justifyContent: 'center', alignContent: 'center', backgroundColor: '#E18D96'}}
 					>
 						<Text style={{

@@ -17,7 +17,7 @@ export default class SettingsScreen extends Component {
           borderStyle: 'dotted',
           padding: 200
         },
-        headerBackTitle:'hello',
+        headerBackTitle:'Back to Profile',
         headerRight: (
           <Icon type="FontAwesome" name="share-alt" style={{ fontSize: 25, paddingRight: 20, color: 'white' }} onPress={() => some(true)} />
         ),
@@ -40,10 +40,11 @@ export default class SettingsScreen extends Component {
   }
 
   render(){
+    const {navigate} = this.props.navigation
     return (
       <View style={{ marginTop: -60 }}>
         <Modal setModalVisible={this.setModalVisible} modalVisible={this.state.modalVisible}/>
-        <Profile />
+        <Profile navigate={navigate} />
       </View>
     );
   }
