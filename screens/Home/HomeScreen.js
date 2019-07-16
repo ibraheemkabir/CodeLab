@@ -6,7 +6,6 @@ import { AsyncStorage } from 'react-native';
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag';
 
-
 export const FEED_QUERY = gql`
 	 query {
     viewer {
@@ -27,7 +26,7 @@ class LogoTitle extends React.Component {
 }
 class HomeScreen extends Component {
 	static navigationOptions = {
-		headerTitle: <LogoTitle />,
+		headerLeft: <LogoTitle />,
 		headerStyle: {
 			backgroundColor: '#A02C2D'
 		},
@@ -37,37 +36,27 @@ class HomeScreen extends Component {
 	state = {
 		loading: false
 	}
-	async signInAsync(token) {
+
+	async signInAsync() {
 		this.setState({loading:true})
 		try {
-			if (!token) {
-				const token = await getGithubTokenAsync();
-				if (token) {
+					const token = await getGithubTokenAsync();
 					await AsyncStorage.setItem('GithubStorageKey', token);
-					this.setState({loading:false})
 					const viewer = this.props.feedQuery.viewer || null
-					this.props.navigation.navigate('List', {
-						itemId: viewer,
+					if (token !== null) {
+						this.props.navigation.navigate('List', {
+							itemId: viewer,
 					})
+					this.setState({loading:false})
 					return token;
 				}
-			} else {
-				return
-			}
 		} catch ({ message }) {
 			return message
+			console.log('hello')
 		}
 	};
 
 	render() {
-		const { navigate } = this.props.navigation;
-		const viewer = this.props.feedQuery.viewer || null
-		const token = AsyncStorage.getItem('GithubStorageKey');
-		if (token!==null) {
-			navigate('List', {
-				itemId: viewer,
-			})
-		}
 		return (
 			<Container>
 				{
@@ -122,7 +111,7 @@ const styles = StyleSheet.create({
 })
 
 export default graphql(FEED_QUERY, {
-	name: 'feedQuery', // name of the injected prop: this.props.feedQuery...
+	name: 'feedQuery',
 	options: {
 		fetchPolicy: 'network-only',
 	},

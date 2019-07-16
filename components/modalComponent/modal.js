@@ -14,6 +14,7 @@ export default class Modals extends Component {
 						<View style={{
 							backgroundColor: 'white', height: 170, width: 400, flexDirection: 'row', justifyContent: 'space-between', justifyContent: 'center', alignContent: 'center', alignItems: 'center', flexDirection: 'column', shadowColor: 'black', shadowOffset: { height: -4 }, shadowOpacity: 0.5}}>
 							<View style={{
+								flex: 1,
 								justifyContent: 'flex-start',
 								alignContent: 'flex-start',
 								alignItems: 'flex-start',
@@ -22,7 +23,7 @@ export default class Modals extends Component {
 							<TouchableHighlight
 								onPress = {() => this.props.setModalVisible(false)}
 								style={{}}>
-								<Icon name='close' />
+								<Image source={require('../../assets/images/close.png')} />
 							</TouchableHighlight>
 							</View>
 								<View style={{flexDirection: 'row'}}>

@@ -3,8 +3,8 @@ import { AuthSession } from 'expo';
 const REDIRECT_URL = AuthSession.getRedirectUrl();
 
 const github = {
-	id: "78056fcf857fffe8db8b",
-	secret: "0d6242c69b53a95050765d47ddf0809302257c1d"
+	id: '78056fcf857fffe8db8b',
+	secret: '0d6242c69b53a95050765d47ddf0809302257c1d'
 };
 
 const githubFields = [
@@ -60,10 +60,8 @@ async function getGithubTokenAsync() {
 			}
 			throw new Error(`Github Auth: ${error} ${error_description}`);
 		}
-		const { token_type, scope, access_token } = await createTokenWithCode(
-			params.code
-		);
-		console.log('====>',access_token)
+		const { token_type, scope, access_token } = await createTokenWithCode(params.code);
+		console.log(access_token)
 		return access_token;
 	} catch ({ message }) {
 		throw new Error(`Github Auth: ${message}`);

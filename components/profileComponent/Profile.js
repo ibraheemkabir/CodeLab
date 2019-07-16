@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Image, View,StyleSheet,Text } from 'react-native';
 import { Card, CardItem,Button,Icon } from 'native-base';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 export default class CardImageExample extends Component {
 	render() {
@@ -48,7 +49,9 @@ export default class CardImageExample extends Component {
 					<View style={{ alignItems:'flex-end' }}>
 						<Text style={{
 							fontSize: 22, fontFamily: 'roboto', fontWeight: '600', color: '#47525E', marginTop: -50, paddingRight: 25}}>
-							<Icon name="home" type='FontAwesome5' style={{ fontSize: 35, color:'#A02C2D'}} onPress={()=>navigate('Web',{login: data.node.login})}/>							
+							<TouchableWithoutFeedback onPress={() => navigate('Web', { login: data.node.login })}>
+									<Image source={require('../../assets/images/share-symbol.png')} style={{ fontSize: 35, color: '#A02C2D' }}  />							
+							</TouchableWithoutFeedback>
 					</Text>
 				</View>
 				<View style={{ alignItems:'center',textAlign:'center'}}>

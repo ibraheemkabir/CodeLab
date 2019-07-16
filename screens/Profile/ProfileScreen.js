@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
-import {View} from 'react-native';
-import {Icon} from 'native-base';
+import {View,Image,TouchableHighlight} from 'react-native';
 import Profile from '../../components/profileComponent/Profile'
 import Modal from '../../components/modalComponent/modal'
 export default class SettingsScreen extends Component {
@@ -19,7 +18,9 @@ export default class SettingsScreen extends Component {
         },
         headerBackTitle:'Back to Profile',
         headerRight: (
-          <Icon type='MaterialIcons' name="build" style={{ fontSize: 25, paddingRight: 20, color: 'white' }} onPress={() => some(true)} />
+          <TouchableHighlight onPress={() => some(true)}>
+            <Image source={require('../../assets/images/share.png')} style={{ marginRight: 30 }}  />
+          </TouchableHighlight>
         ),
         headerTitleStyle: {
           color: 'white',

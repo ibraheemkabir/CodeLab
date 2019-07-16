@@ -59,8 +59,10 @@ class LinksScreen extends Component {
       },
       headerTintColor: 'white',
       headerRight: (
-        <Icon type="FontAwesome" name="share" style={{ fontSize: 25,paddingRight: 10, color: '#ffffff' }} 
-          onPress={() => searchVisibility(true)} />
+        <TouchableHighlight onPress={() => searchVisibility(true)}>
+          <Image source={require('../../assets/images/search.png')} style={{ marginRight: 15, color: '#ffffff' }}/>
+        </TouchableHighlight>
+        
       ),
       headerLeft: (
         <TouchableHighlight
@@ -74,6 +76,7 @@ class LinksScreen extends Component {
           />        
         </TouchableHighlight >
       ),
+      headerBackTitle: null,
     }
   };
 
@@ -175,7 +178,7 @@ class LinksScreen extends Component {
                   }}
                   style={{}}
                 >
-                <Icon type="FontAwesome" name="close" style={{ fontSize: 25, paddingRight: 10, color: 'black' }}/>
+                  <Image source={require('../../assets/images/close.png')} />
                 </TouchableHighlight>
               </View>
               <Item style={{ marginTop: 10, margin: 30, paddingLeft: 20 }}>

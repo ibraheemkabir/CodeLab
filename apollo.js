@@ -5,14 +5,11 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { AsyncStorage } from 'react-native';
 
 const makeApolloClient = (token) => {
-	// create an apollo link instance, a network interface for apollo client
 	const httpLink = new HttpLink({
 		uri: "https://api.github.com/graphql",
 	});
 
 	const authLink = setContext((_, { headers }) => {
-		// get the authentication token from local storage if it exists
-		// return the headers to the context so httpLink can read them
 		return {
 			headers: {
 				...headers,

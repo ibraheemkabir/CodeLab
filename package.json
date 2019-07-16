@@ -10,7 +10,7 @@
   },
   "jest": {
     "preset": "jest-expo",
-    "setupTestFrameworkScriptFile": "./jest/setup.js"
+    "setupFilesAfterEnv": "./jest/setup.js"
   },
   "dependencies": {
     "@expo/samples": "~3.0.0",
@@ -30,6 +30,7 @@
     "expo-web-browser": "^5.0.0",
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1",
+    "lodash": "^4.17.14",
     "native-base": "^2.12.1",
     "react": "16.8.3",
     "react-apollo": "^2.5.8",
