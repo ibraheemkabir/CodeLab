@@ -5,12 +5,12 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View,AsyncStorage } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { ApolloProvider } from 'react-apollo';
-import makeApolloClient from './apollo';
+import makeApolloClient from './apollo/apollo';
 
 import AppNavigator from './navigation/AppNavigator';
 
 
-
+global.fetch = require('node-fetch');
 
 export default class App extends React.Component {
   state = {

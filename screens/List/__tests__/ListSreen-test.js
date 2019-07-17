@@ -3,6 +3,7 @@ import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() });
 import {shallow} from 'enzyme'
+import { MockedProvider } from 'react-apollo/test-utils';
 
 import List from '../ListScreen';
 
@@ -13,7 +14,11 @@ it(`renders correctly`, () => {
       setParams: jest.fn()
     },
   }
-  const list = shallow(<List {...props}/>);
+  const list = shallow(
+    <MockedProvider addTypename={false}>
+      <List {...props} />
+    </MockedProvider>
+  );
 
   expect(list).toMatchSnapshot();
 });

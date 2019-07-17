@@ -46,6 +46,7 @@ exports[`renders correctly 1`] = `
           Object {
             "alignContent": "flex-start",
             "alignItems": "flex-start",
+            "flex": 1,
             "justifyContent": "flex-start",
             "paddingRight": 15,
           }
@@ -62,7 +63,10 @@ exports[`renders correctly 1`] = `
           onStartShouldSetResponder={[Function]}
           style={Object {}}
         >
-          <Text />
+          <Image
+            source={1}
+            style={null}
+          />
         </View>
       </View>
       <View

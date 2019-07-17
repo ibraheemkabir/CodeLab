@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {View,Image,TouchableHighlight} from 'react-native';
 import Profile from '../../components/profileComponent/Profile'
 import Modal from '../../components/modalComponent/modal'
+
 export default class SettingsScreen extends Component {
   state = {
     modalVisible: false,

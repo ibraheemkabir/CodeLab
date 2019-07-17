@@ -3,9 +3,10 @@ import { ApolloClient } from 'apollo-client';
 import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { AsyncStorage } from 'react-native';
+import { createHttpLink } from "apollo-link-http";
 
 const makeApolloClient = (token) => {
-	const httpLink = new HttpLink({
+	const httpLink = createHttpLink({
 		uri: "https://api.github.com/graphql",
 	});
 

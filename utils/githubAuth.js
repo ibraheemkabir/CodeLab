@@ -61,7 +61,6 @@ async function getGithubTokenAsync() {
 			throw new Error(`Github Auth: ${error} ${error_description}`);
 		}
 		const { token_type, scope, access_token } = await createTokenWithCode(params.code);
-		console.log(access_token)
 		return access_token;
 	} catch ({ message }) {
 		throw new Error(`Github Auth: ${message}`);

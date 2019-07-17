@@ -17,6 +17,7 @@ export const FEED_QUERY = gql`
 class LogoTitle extends React.Component {
 
 	render() {
+		console.log(this.props)
 		return (
 			<View style={{ flex: 1, flexDirection: 'row', paddingLeft: 10}}>
 				<Title style={{ color: 'white'}}>CodeLab</Title>
@@ -57,6 +58,7 @@ class HomeScreen extends Component {
 	};
 
 	render() {
+		console.log(this.props)
 		return (
 			<Container>
 				{
@@ -71,10 +73,11 @@ class HomeScreen extends Component {
 					</View>					
 					<Button 
 					onPress={()=>this.signInAsync()}
+					id= 'btn'
 					style={{ flex: 1, justifyContent: 'center', alignContent: 'center', backgroundColor: '#E18D96'}}
 					>
 						<Text style={{
-							flex: 1, textAlign: 'center', fontWeight: 'bold', color: 'white' }}>
+							flex: 1, textAlign: 'center', fontWeight: 'bold', color: 'white' }} id='btntext'>
 							Sign In with Github
 						</Text>
 					</Button>

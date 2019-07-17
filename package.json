@@ -10,7 +10,9 @@
   },
   "jest": {
     "preset": "jest-expo",
-    "setupFilesAfterEnv": "./jest/setup.js"
+    "setupFilesAfterEnv": [
+      "./jest/setup.js"
+    ]
   },
   "dependencies": {
     "@expo/samples": "~3.0.0",
@@ -21,6 +23,7 @@
     "apollo-client": "^2.6.3",
     "apollo-link-context": "^1.0.18",
     "apollo-link-http": "^1.5.15",
+    "apollo-link-schema": "^1.2.3",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "expo": "^33.0.0",
@@ -30,8 +33,10 @@
     "expo-web-browser": "^5.0.0",
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1",
+    "graphql-tools": "^4.0.5",
     "lodash": "^4.17.14",
     "native-base": "^2.12.1",
+    "node-fetch": "^2.6.0",
     "react": "16.8.3",
     "react-apollo": "^2.5.8",
     "react-dom": "^16.8.6",

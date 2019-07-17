@@ -49,8 +49,8 @@ export default class CardImageExample extends Component {
 					<View style={{ alignItems:'flex-end' }}>
 						<Text style={{
 							fontSize: 22, fontFamily: 'roboto', fontWeight: '600', color: '#47525E', marginTop: -50, paddingRight: 25}}>
-							<TouchableWithoutFeedback onPress={() => navigate('Web', { login: data.node.login })}>
-									<Image source={require('../../assets/images/share-symbol.png')} style={{ fontSize: 35, color: '#A02C2D' }}  />							
+							<TouchableWithoutFeedback id='goToWeb' onPress={() => navigate('Web', { login: data.node.login })}>
+									<Image source={require('../../assets/images/share-symbol.png')}  />							
 							</TouchableWithoutFeedback>
 					</Text>
 				</View>

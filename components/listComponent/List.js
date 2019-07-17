@@ -21,7 +21,7 @@ export default class ListAvatarExample extends Component {
 									data.map(data=>(
 										<ListItem
 											avatar
-											style={{}}
+											id='listItem'
 											onPress={() => navigation('Profile',{
 												data
 											})}

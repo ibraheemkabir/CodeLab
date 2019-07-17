@@ -100,112 +100,6 @@ exports[`renders correctly 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderBottomWidth": 1,
-            "borderColor": "#D9D5DC",
-            "borderLeftWidth": 0,
-            "borderRadius": undefined,
-            "borderRightWidth": 0,
-            "borderTopWidth": 0,
-            "borderWidth": undefined,
-            "flexDirection": "row",
-            "marginBottom": 20,
-            "marginLeft": 2,
-            "opacity": 1,
-            "textAlign": "left",
-          }
-        }
-      >
-        <TextInput
-          allowFontScaling={true}
-          editable={true}
-          placeholder="GitHub UserName"
-          placeholderTextColor="#575757"
-          rejectResponderTermination={true}
-          style={
-            Array [
-              Object {
-                "color": "#000",
-                "flex": 1,
-                "fontSize": 17,
-                "height": 50,
-                "paddingLeft": 5,
-                "paddingRight": 5,
-                "top": 1.5,
-              },
-              Object {
-                "textAlign": "left",
-              },
-            ]
-          }
-          underlineColorAndroid="rgba(0,0,0,0)"
-        />
-      </View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderBottomWidth": 1,
-            "borderColor": "#D9D5DC",
-            "borderLeftWidth": 0,
-            "borderRadius": undefined,
-            "borderRightWidth": 0,
-            "borderTopWidth": 0,
-            "borderWidth": undefined,
-            "flexDirection": "row",
-            "marginBottom": 20,
-            "marginLeft": 2,
-            "opacity": 1,
-            "textAlign": "left",
-          }
-        }
-      >
-        <TextInput
-          allowFontScaling={true}
-          editable={true}
-          placeholder="GitHub Password"
-          placeholderTextColor="#575757"
-          rejectResponderTermination={true}
-          style={
-            Array [
-              Object {
-                "color": "#000",
-                "flex": 1,
-                "fontSize": 17,
-                "height": 50,
-                "paddingLeft": 5,
-                "paddingRight": 5,
-                "top": 1.5,
-              },
-              Object {
-                "textAlign": "left",
-              },
-            ]
-          }
-          underlineColorAndroid="rgba(0,0,0,0)"
-        />
-      </View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
             "alignContent": "center",
             "alignItems": "center",
             "alignSelf": "flex-start",
@@ -233,6 +127,7 @@ exports[`renders correctly 1`] = `
         }
       >
         <Text
+          id="btntext"
           style={
             Object {
               "color": "white",
@@ -242,7 +137,7 @@ exports[`renders correctly 1`] = `
             }
           }
         >
-          Login
+          Sign In with Github
         </Text>
       </View>
     </View>
