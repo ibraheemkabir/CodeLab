@@ -1,12 +1,19 @@
-import React from 'react';
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-
-import MainTabNavigator from './MainTabNavigator';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
+import React,{Component} from 'react'
+import {AsyncStorage,View} from 'react-native'
+import HomeScreen from '../screens/Home/HomeScreen';
+import ListScreen from '../screens/List/ListScreen';
+import ProfileScreen from '../screens/Profile/ProfileScreen';
+import WebView from '../screens/WebView'
+import Auth from './authScreen'
 
 export default createAppContainer(
-  createSwitchNavigator({
-    // You could add another route here for authentication.
-    // Read more at https://reactnavigation.org/docs/en/auth-flow.html
-    Main: MainTabNavigator,
+  createStackNavigator({
+   Auth,
+   Main: HomeScreen,
+   List: ListScreen,
+   Profile: ProfileScreen,
+   Web: WebView
   })
 );
+
