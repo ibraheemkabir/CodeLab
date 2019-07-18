@@ -1,3 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test profile screen component renders correctly 1`] = `ShallowWrapper {}`;
+exports[`test profile screen component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "marginTop": -60,
+    }
+  }
+>
+  <Modals
+    modalVisible={false}
+    setModalVisible={[Function]}
+  />
+  <CardImageExample
+    data={
+      Object {
+        "node": Object {
+          "avatarUrl": "",
+          "bio": "",
+          "followers": Object {
+            "totalCount": "",
+          },
+          "following": Object {
+            "totalCount": "",
+          },
+          "login": "",
+          "name": "",
+          "repositories": Object {
+            "totalCount": "",
+          },
+          "starredRepositories": Object {
+            "totalCount": "",
+          },
+        },
+      }
+    }
+    navigate={[MockFunction]}
+  />
+</View>
+`;

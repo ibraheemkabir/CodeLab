@@ -197,9 +197,6 @@ class LinksScreen extends Component {
 
 export default graphql(DevelopersList, {
   name: 'Developers', // name of the injected prop: this.props.feedQuery...
-  options: {
-    fetchPolicy: 'network-only',
-  },
 })(LinksScreen )
 
 const styles = StyleSheet.create({
