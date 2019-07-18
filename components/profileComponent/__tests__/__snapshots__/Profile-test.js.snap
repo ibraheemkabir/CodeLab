@@ -1,3 +1,346 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `ShallowWrapper {}`;
+exports[`renders correctly 1`] = `
+<View>
+  <Styled(Card)>
+    <Styled(CardItem)
+      cardBody={true}
+      style={
+        Object {
+          "flexDirection": "row",
+          "width": null,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": "",
+          }
+        }
+        style={
+          Object {
+            "flex": 1,
+            "height": 380,
+            "width": null,
+          }
+        }
+      />
+    </Styled(CardItem)>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgba(0, 0, 0, 0.85)",
+          "flex": 1,
+          "justifyContent": "center",
+          "position": "absolute",
+          "width": 410,
+        }
+      }
+    >
+      <Styled(CardItem)
+        cardBody={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 380,
+            "justifyContent": "center",
+            "width": 150,
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Styled(CardItem)
+        cardBody={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "width": 150,
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "uri": "",
+            }
+          }
+          style={
+            Object {
+              "flex": 1,
+              "height": 150,
+              "marginTop": -80,
+              "width": 150,
+            }
+          }
+        />
+      </Styled(CardItem)>
+    </View>
+    <View />
+  </Styled(Card)>
+  <View
+    style={
+      Object {
+        "marginTop": 60,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "flex-end",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#47525E",
+            "fontFamily": "roboto",
+            "fontSize": 22,
+            "fontWeight": "600",
+            "marginTop": -50,
+            "paddingRight": 25,
+          }
+        }
+      >
+        <Component
+          id="goToWeb"
+          onPress={[Function]}
+        >
+          <Image
+            source={1}
+          />
+        </Component>
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "textAlign": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#47525E",
+            "fontFamily": "roboto",
+            "fontSize": 22,
+            "fontWeight": "600",
+          }
+        }
+      />
+      <Text
+        style={
+          Object {
+            "color": "#47525E",
+            "fontFamily": "roboto",
+            "fontSize": 20,
+            "fontWeight": "400",
+            "marginTop": 15,
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "marginTop": 30,
+        "textAlign": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "margin": 10,
+          "textAlign": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#8492A6",
+            "fontFamily": "roboto",
+            "fontSize": 20,
+            "fontWeight": "400",
+            "letterSpacing": 1,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#47525E",
+              "fontSize": 20,
+              "fontWeight": "700",
+            }
+          }
+        />
+          following
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#47525E",
+            "fontFamily": "roboto",
+            "fontSize": 15,
+            "fontWeight": "400",
+            "justifyContent": "space-around",
+            "padding": 10,
+          }
+        }
+      >
+        |
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#8492A6",
+            "fontFamily": "roboto",
+            "fontSize": 20,
+            "fontWeight": "400",
+            "letterSpacing": 1,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#47525E",
+              "fontSize": 20,
+              "fontWeight": "700",
+            }
+          }
+        />
+          Stars
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      cardBody={true}
+      style={
+        Object {
+          "flex": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "padding": 30,
+        }
+      }
+    >
+      <Styled(Button)
+        style={
+          Object {
+            "alignContent": "center",
+            "backgroundColor": "transparent",
+            "flexDirection": "column",
+            "height": 200,
+            "justifyContent": "center",
+            "width": 150,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#47525E",
+              "flex": 1,
+              "fontFamily": "Droid Sans Mono",
+              "fontSize": 85,
+              "fontWeight": "700",
+              "letterSpacing": 1,
+              "textAlign": "center",
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "color": "#47525E",
+              "flex": 1,
+              "fontFamily": "Droid Sans Mono",
+              "fontSize": 17,
+              "fontWeight": "700",
+              "letterSpacing": 1,
+              "textAlign": "center",
+            }
+          }
+        >
+          Repositories
+        </Text>
+      </Styled(Button)>
+      <Styled(Button)
+        style={
+          Object {
+            "alignContent": "center",
+            "backgroundColor": "transparent",
+            "flexDirection": "column",
+            "height": 200,
+            "justifyContent": "center",
+            "width": 150,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#47525E",
+              "flex": 1,
+              "fontFamily": "Droid Sans Mono",
+              "fontSize": 85,
+              "fontWeight": "700",
+              "letterSpacing": 1,
+              "textAlign": "center",
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "color": "#47525E",
+              "flex": 1,
+              "fontFamily": "Droid Sans Mono",
+              "fontSize": 17,
+              "fontWeight": "700",
+              "letterSpacing": 1,
+              "textAlign": "center",
+            }
+          }
+        >
+          Followers
+        </Text>
+      </Styled(Button)>
+    </View>
+  </View>
+</View>
+`;

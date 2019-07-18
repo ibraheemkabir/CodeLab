@@ -11,6 +11,7 @@
 	"setupFiles": [
 		"./jest/setup.js"
 	],
+	"setupFilesAfterEnv": "setup-tests.js",
 	"transformIgnorePatterns": [
 		"node_modules/(?!(jest-)?react-native)"
 	],

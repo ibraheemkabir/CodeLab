@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1563317664771" clover="3.2.0">
-  <project timestamp="1563317664771" name="All files">
-    <metrics statements="133" coveredstatements="64" conditionals="32" coveredconditionals="9" methods="45" coveredmethods="18" elements="210" coveredelements="91" complexity="0" loc="133" ncloc="133" packages="12" files="18" classes="18"/>
+<coverage generated="1563456974253" clover="3.2.0">
+  <project timestamp="1563456974253" name="All files">
+    <metrics statements="133" coveredstatements="73" conditionals="32" coveredconditionals="10" methods="45" coveredmethods="22" elements="210" coveredelements="105" complexity="0" loc="133" ncloc="133" packages="12" files="19" classes="19"/>
     <package name="CodeLab">
       <metrics statements="18" coveredstatements="14" conditionals="6" coveredconditionals="6" methods="7" coveredmethods="3"/>
       <file name="App.js" path="/Users/kabiribraheem/Documents/CodeLab-expo/codelab-expo/CodeLab/App.js">
@@ -40,7 +40,7 @@
       </file>
     </package>
     <package name="CodeLab.assets.images">
-      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="close.png" path="/Users/kabiribraheem/Documents/CodeLab-expo/codelab-expo/CodeLab/assets/images/close.png">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -50,6 +50,10 @@
         <line num="1" count="1" type="stmt"/>
       </file>
       <file name="instagram.png" path="/Users/kabiribraheem/Documents/CodeLab-expo/codelab-expo/CodeLab/assets/images/instagram.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="loading.gif" path="/Users/kabiribraheem/Documents/CodeLab-expo/codelab-expo/CodeLab/assets/images/loading.gif">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
       </file>
@@ -123,16 +127,16 @@
       </file>
     </package>
     <package name="CodeLab.screens.Home">
-      <metrics statements="20" coveredstatements="6" conditionals="6" coveredconditionals="1" methods="4" coveredmethods="1"/>
+      <metrics statements="19" coveredstatements="10" conditionals="6" coveredconditionals="2" methods="4" coveredmethods="3"/>
       <file name="HomeScreen.js" path="/Users/kabiribraheem/Documents/CodeLab-expo/codelab-expo/CodeLab/screens/Home/HomeScreen.js">
-        <metrics statements="20" coveredstatements="6" conditionals="6" coveredconditionals="1" methods="4" coveredmethods="1"/>
+        <metrics statements="19" coveredstatements="10" conditionals="6" coveredconditionals="2" methods="4" coveredmethods="3"/>
         <line num="9" count="1" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
         <line num="46" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -140,12 +144,11 @@
         <line num="48" count="0" type="stmt"/>
         <line num="51" count="0" type="stmt"/>
         <line num="52" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
         <line num="56" count="0" type="stmt"/>
-        <line num="61" count="1" type="stmt"/>
-        <line num="62" count="1" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="90" count="1" type="stmt"/>
+        <line num="61" count="4" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
       </file>
     </package>
     <package name="CodeLab.screens.List">
@@ -182,7 +185,7 @@
         <line num="127" count="0" type="stmt"/>
         <line num="177" count="0" type="stmt"/>
         <line num="186" count="0" type="stmt"/>
-        <line num="205" count="1" type="stmt"/>
+        <line num="202" count="1" type="stmt"/>
       </file>
     </package>
     <package name="CodeLab.screens.Profile">
@@ -203,18 +206,18 @@
       </file>
     </package>
     <package name="CodeLab.utils">
-      <metrics statements="17" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <metrics statements="17" coveredstatements="7" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="2"/>
       <file name="githubAuth.js" path="/Users/kabiribraheem/Documents/CodeLab-expo/codelab-expo/CodeLab/utils/githubAuth.js">
-        <metrics statements="17" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <metrics statements="17" coveredstatements="7" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="2"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
         <line num="54" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="55" count="0" type="stmt"/>
         <line num="56" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -222,7 +225,7 @@
         <line num="61" count="0" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
         <line num="64" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
       </file>
     </package>
   </project>

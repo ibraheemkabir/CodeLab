@@ -2,11 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      - image: circleci/node:7.10
-  steps:
+      - image: circleci/node:12.4.0
+
+    environment:
+      CC_TEST_REPORTER_ID: d6dbbee955798ca46de4d522a169f32548a7a9dd1ec8720af21ff13aaa09ea33
+    steps:
       - checkout
-      - restore_cache: # special step to restore the dependency cache
+      - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Setup Dependencies
@@ -14,14 +16,11 @@ jobs:
       - run:
           name: Setup Code Climate test-reporter
           command: |
+            # download test reporter as a static binary
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
-      - save_cache: # special step to save the dependency cache
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
-      - run: # run tests
-          name: coveralls
+      - run:
+          name: test coverage
           command: |
             ./cc-test-reporter before-build
             npm test -- -u
