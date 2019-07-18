@@ -5,4 +5,4 @@ CodeLab is a react-native app which helps users view a list of Github users in l
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/8f188009323f101ef5eb/test_coverage)](https://codeclimate.com/github/ibraheemkabir/CodeLab/test_coverage)
 
-[![CircleCI](https://circleci.com/gh/ibraheemkabir/CodeLab.svg?style=svg)](https://circleci.com/gh/ibraheemkabir/CodeLab)
+[![CircleCI](https://circleci.com/gh/ibraheemkabir/CodeLab/tree/develop.svg?style=svg)](https://circleci.com/gh/ibraheemkabir/CodeLab/tree/develop)

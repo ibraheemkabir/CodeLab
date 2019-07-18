@@ -17,7 +17,6 @@ export const FEED_QUERY = gql`
 class LogoTitle extends React.Component {
 
 	render() {
-		console.log(this.props)
 		return (
 			<View style={{ flex: 1, flexDirection: 'row', paddingLeft: 10}}>
 				<Title style={{ color: 'white'}}>CodeLab</Title>
@@ -42,6 +41,7 @@ class HomeScreen extends Component {
 		this.setState({loading:true})
 		try {
 					const token = await getGithubTokenAsync();
+					console.log('shoutttttt',this.props)
 					await AsyncStorage.setItem('GithubStorageKey', token);
 					const viewer = this.props.feedQuery.viewer || null
 					if (token !== null) {
@@ -58,7 +58,6 @@ class HomeScreen extends Component {
 	};
 
 	render() {
-		console.log(this.props)
 		return (
 			<Container>
 				{
