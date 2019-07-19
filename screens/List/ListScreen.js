@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { ScrollView, StyleSheet,Text, View,Modal,TouchableHighlight,Image,AsyncStorage} from 'react-native';
+import { ScrollView, StyleSheet,Text, View,Modal,TouchableHighlight,Image,AsyncStorage,Alert} from 'react-native';
 import { graphql } from 'react-apollo'
 import { Item, Input,Icon } from 'native-base';
 import gql from 'graphql-tag';
@@ -60,19 +60,16 @@ class LinksScreen extends Component {
       headerTintColor: 'white',
       headerRight: (
         <TouchableHighlight onPress={() => searchVisibility(true)}>
-          <Image source={require('../../assets/images/search.png')} style={{ marginRight: 15, color: '#ffffff' }}/>
-        </TouchableHighlight>
-        
+          <Image source={require('../../assets/images/search.png')} style={{ marginRight: 15}}/>
+        </TouchableHighlight> 
       ),
       headerLeft: (
         <TouchableHighlight
           onPress={() => signOut()}
-          underlayColor={'#444444'}
-        >
+          underlayColor={'#444444'}>
           <Image
             source={{ url: viewer, width: 30, height: 30 }}
             style={{ marginLeft: 15, borderRadius: 15 }}
-            
           />        
         </TouchableHighlight >
       ),
@@ -91,14 +88,28 @@ class LinksScreen extends Component {
     this.setState({ modalVisible: visible });
   }
 
-  _signOutAsync = async () => {
+  _signOut = async () => {
     try {
       await AsyncStorage.removeItem('GithubStorageKey')
       this.props.navigation.navigate('Main')
     } catch (error) {
-      // Error retrieving data
-      console.log(error.message);
+      return error.message
     }
+  }
+
+  _signOutAsync = async () => {
+    Alert.alert(
+      'Are you sure you want to log Out',
+      '',
+      [
+        { text: 'Confirmt', onPress: () => this._signOut() },
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+      ],
+      { cancelable: false },
+    );
   };
 
   componentWillMount(){

@@ -25,6 +25,7 @@ export default class ListAvatarExample extends Component {
 											onPress={() => navigation('Profile',{
 												data
 											})}
+											key={data.node.name}
 										>
 											<Left>
 												<Thumbnail source={{uri: data.node.avatarUrl}}/>

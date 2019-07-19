@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Image,TouchableHighlight} from 'react-native';
+import { View, Image, TouchableHighlight, Share} from 'react-native';
 import Profile from '../../components/profileComponent/Profile'
 import Modal from '../../components/modalComponent/modal'
 
@@ -8,18 +8,40 @@ export default class SettingsScreen extends Component {
     modalVisible: false,
   };
 
+  onShare = async () => {
+    try {
+      const result = await Share.share({
+        message:
+          'React Native | A framework for building native apps using React',
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   static navigationOptions = ({navigation}) => {
     const some = navigation.getParam('setModalVisibles')
+    const share= navigation.getParam('share')
+
     return{
       headerStyle: {
           backgroundColor: 'transparent',
           color: 'white',
           borderStyle: 'dotted',
-          padding: 200
         },
         headerBackTitle:'Back to Profile',
         headerRight: (
-          <TouchableHighlight onPress={() => some(true)}>
+          <TouchableHighlight onPress={() => share()}>
             <Image source={require('../../assets/images/share.png')} style={{ marginRight: 30 }}  />
           </TouchableHighlight>
         ),
@@ -33,12 +55,13 @@ export default class SettingsScreen extends Component {
       }
   };
 
+  
   setModalVisible = (visible) => {
     this.setState({ modalVisible: visible });
   }
 
   componentWillMount() {
-    this.props.navigation.setParams({ setModalVisibles: this.setModalVisible });
+    this.props.navigation.setParams({ setModalVisibles: this.setModalVisible,share: this.onShare });
   }
 
   render(){

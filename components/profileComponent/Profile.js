@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Image, View,StyleSheet,Text } from 'react-native';
 import { Card, CardItem,Button,Icon } from 'native-base';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { TouchableWithoutFeedback, TouchableHighlight } from 'react-native-gesture-handler';
 
 export default class CardImageExample extends Component {
 	render() {
@@ -46,34 +46,31 @@ export default class CardImageExample extends Component {
 				</View>
 			</Card>
 				<View style={{marginTop: 60}}>
-					<View style={{ alignItems:'flex-end' }}>
-						<Text style={{
-							fontSize: 22, fontFamily: 'roboto', fontWeight: '600', color: '#47525E', marginTop: -50, paddingRight: 25}}>
-							<TouchableWithoutFeedback id='goToWeb' onPress={() => navigate('Web', { login: data.node.login })}>
-									<Image source={require('../../assets/images/share-symbol.png')}  />							
-							</TouchableWithoutFeedback>
-					</Text>
-				</View>
-				<View style={{ alignItems:'center',textAlign:'center'}}>
-					<Text style={{ fontSize: 22, fontFamily: 'roboto', fontWeight: '600', color: '#47525E'}}>
-							{data.node.name}
-						</Text>
-					<Text style={{ fontSize: 20, fontFamily: 'roboto', fontWeight: '400', color: '#47525E',marginTop: 15 }}>
-							{data.node.bio}
-						</Text>
-				</View>
+					<View style={{ alignItems: 'flex-end', fontFamily: 'roboto', fontWeight: '600', color: '#47525E', marginTop: -50, paddingRight: 25 }}>
+						<TouchableHighlight onPress={() => navigate('Web', { login: data.node.login })}>
+							<Image source={require('../../assets/images/share-symbol.png')}  />	
+						</TouchableHighlight>
+					</View>
+					<View style={{ alignItems:'center',textAlign:'center'}}>
+							<Text style={{ fontSize: 22, fontFamily: 'roboto', fontWeight: '600', color: '#47525E'}}>
+								{data.node.name}
+							</Text>
+							<Text style={{ fontSize: 20, fontFamily: 'roboto', fontWeight: '400', color: '#47525E',marginTop: 15 }}>
+								{data.node.bio}
+							</Text>
+					</View>
 				</View>
 				<View style={{ marginTop: 30, alignItems: 'center', textAlign: 'center' }}>
 					<View style={{ alignItems: 'center', textAlign: 'center', flexDirection: 'row',margin: 10}}>
 						<Text style={{ fontSize: 20, fontFamily: 'roboto', letterSpacing: 1, fontWeight: '400', color: '#8492A6' }}>
-							<Text style={{ fontSize: 20, fontWeight: '700', color: '#47525E' }}>{data.node.following.totalCount}</Text>  following
-							</Text>
+							<Text style={{ fontSize: 20, fontWeight: '700', color: '#47525E' }}>{data.node.following.totalCount}</Text> following
+						</Text>
 						<Text style={{ fontSize: 15, fontFamily: 'roboto', fontWeight: '400', color: '#47525E',justifyContent: 'space-around',padding: 10 }}>
 						|
 						</Text>
 						<Text style={{ fontSize: 20, fontFamily: 'roboto', letterSpacing: 1, fontWeight: '400', color: '#8492A6'}}>
 							<Text style={{ fontSize: 20, fontWeight: '700', color: '#47525E' }}>{data.node.starredRepositories.totalCount}</Text>  Stars
-							</Text>
+						</Text>
 					</View>
 				</View>
 			<View style={{
@@ -81,7 +78,6 @@ export default class CardImageExample extends Component {
 				flexDirection: 'column',
 				justifyContent: 'space-between'
 			}}>
-			
 					<View
 						cardBody
 						style={{
@@ -109,7 +105,6 @@ export default class CardImageExample extends Component {
 
 					</View>
 			</View>
-			
 		</View>
 		);
 	}
@@ -126,7 +121,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		},
 		btnText: {
-			fontFamily: 'Droid Sans Mono',
+			fontFamily: 'roboto',
 			flex: 1, 
 			textAlign: 'center', 
 			fontWeight: '700', 
@@ -135,7 +130,7 @@ const styles = StyleSheet.create({
 			letterSpacing: 1,
 		},
 		minibtnText: {
-		fontFamily: 'Droid Sans Mono',
+		fontFamily: 'roboto',
 		flex: 1,
 		textAlign: 'center',
 		fontWeight: '700',

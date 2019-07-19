@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "This app helps keep a list of all developers in lagos Nigeria",
+    "name": "codelab-expo",
     "slug": "codelab-expo",
     "privacy": "public",
     "sdkVersion": "33.0.0",
@@ -13,7 +13,7 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/iPhone.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -25,6 +25,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "This app helps keep a list of all developers in lagos Nigeria"
   }
 }
