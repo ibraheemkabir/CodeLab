@@ -1,10 +1,9 @@
 import React,{Component} from 'react';
-import { ScrollView, StyleSheet,Text, View,Modal,TouchableHighlight,Image,AsyncStorage,Alert} from 'react-native';
+import { ScrollView, StyleSheet,Text, View,Modal,TouchableHighlight,Image,AsyncStorage,Alert,RefreshControl,TouchableOpacity} from 'react-native';
 import { graphql } from 'react-apollo'
 import { Item, Input,Icon } from 'native-base';
 import gql from 'graphql-tag';
 import Lists from '../../components/listComponent/List'
-
 
 export const DevelopersList = gql`
 {
@@ -36,42 +35,53 @@ export const DevelopersList = gql`
       }
     }
   }
+  viewer {
+      avatarUrl
+    }
 }
 `;
 
+
 class LinksScreen extends Component {
-  static navigationOptions = ({ navigation }) => {
-    let viewer = 'https://facebook.github.io/react/logo-og.png'
-    const itemId = navigation.getParam('itemId');
-    if (itemId !== null) {
-      viewer = itemId.avatarUrl
-    } 
+  static navigationOptions = ({ navigation }) => {   
+    const avatar = navigation.getParam('avatar');
     const searchVisibility = navigation.getParam('setModalVisibles');
     const signOut = navigation.getParam('signOut');
     return {
       title: 'CodeLab',
       headerStyle: {
         backgroundColor: '#A02C2D',
-        color: '#ffffff'
+        color: '#ffffff',
+
       },
+      headerLayoutPreset: 'center',
       headerTitleStyle: {
-        color: '#ffffff'
+        color: '#ffffff',
+        alignContent:'center',
+        justifyContent: 'center',
+        alignItems: 'center'
       },
       headerTintColor: 'white',
       headerRight: (
-        <TouchableHighlight onPress={() => searchVisibility(true)}>
+        <TouchableOpacity onPress={() => searchVisibility(true)}>
           <Image source={require('../../assets/images/search.png')} style={{ marginRight: 15}}/>
-        </TouchableHighlight> 
+        </TouchableOpacity> 
       ),
       headerLeft: (
-        <TouchableHighlight
+        <TouchableOpacity
           onPress={() => signOut()}
           underlayColor={'#444444'}>
-          <Image
-            source={{ url: viewer, width: 30, height: 30 }}
-            style={{ marginLeft: 15, borderRadius: 15 }}
-          />        
-        </TouchableHighlight >
+            {
+              avatar ?
+              <Image
+                style={{ marginLeft: 15, borderRadius: 15, width: 35, height: 35 }}
+                source={{ uri: avatar }}
+              />
+              :
+              <Icon type='FontAwesome' name='user' 
+              style={{ marginLeft: 15, borderRadius: 15, width: 30, height: 30,color:'white' }}/>  
+            }
+        </TouchableOpacity >
       ),
       headerBackTitle: null,
     }
@@ -80,7 +90,8 @@ class LinksScreen extends Component {
   state = {
     modalVisible: false,
     Url: '../../assets/images/robot-dev.png',
-    data: []
+    data: [],
+    refreshing: false,
   };
 
   
@@ -102,7 +113,7 @@ class LinksScreen extends Component {
       'Are you sure you want to log Out',
       '',
       [
-        { text: 'Confirmt', onPress: () => this._signOut() },
+        { text: 'Confirm', onPress: () => this._signOut() },
         {
           text: 'Cancel',
           style: 'cancel',
@@ -112,15 +123,15 @@ class LinksScreen extends Component {
     );
   };
 
-  componentWillMount(){
-    this.props.navigation.setParams({ setModalVisibles: this.setModalVisible,signOut: this._signOutAsync});
+  async componentDidMount(){
+    this.props.navigation.setParams({ setModalVisibles: this.setModalVisible, signOut: this._signOutAsync, avatar: this.props.navigation.getParam('itemId')});
   }
 
   componentDidUpdate(prevProps){
-   
     if (this.props.Developers.loading !== prevProps.Developers.loading){
       if (this.props.Developers.search){
         this.setState({ data: this.props.Developers.search.edges })
+        this.props.navigation.setParams({avatar: this.props.Developers.viewer.avatarUrl });
       }
     }
   }
@@ -133,20 +144,39 @@ class LinksScreen extends Component {
     })
   }
 
-  render(){
+  _onRefresh = async ()  => {
+    this.setState({ refreshing: true });
+    try{
+      await this.props.Developers.refetch()
+      this.setState({ refreshing: false, data: this.props.Developers.search.edges })
+      this.props.navigation.setParams({ avatar: this.props.Developers.viewer.avatarUrl });
+    }catch(e){
+      this.setState({ refreshing: false})
+      console.log(e)
+    }
+  }
+  
+  render(){    
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <View style={styles.title}>
           <Text style={styles.optionsTitleText}>Developers in Lagos, Nigeria</Text>
         </View>
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.container} 
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={()=>this._onRefresh()}
+            />
+          }
+        >
           {
             this.props.Developers.loading 
               ? <View style={{ alignItems: 'center' }}><Text><Image source={require('../../assets/images/loading.gif')} /></Text></View>
                 : !this.props.Developers.search
                 ? <View style={{ alignItems: 'center' }}><Text style={styles.error}>Error Loading Developers...Check Network Connection</Text></View>
-              : <Lists navigation={navigate} data={this.state.data} />
+              : <Lists navigation={navigate} data={this.state.data} refetch={this.props.Developers.refetch}/>
           }      
         </ScrollView>
         
@@ -162,18 +192,19 @@ class LinksScreen extends Component {
             <View style={{
               backgroundColor: 'white',
               height: 150,
-              width: 400,
+              width: 300,
               alignItems:
                 'flex-end',
               borderRadius: 20,
               borderStyle: 'solid',
               borderColor: 'black',
               shadowColor: 'black',
-              shadowOffset: { height: -5, },
+              shadowOffset: { height: -5},
               shadowColor: 'black',
               shadowOpacity: 1.0,
               paddingLeft: 10,
-              paddingTop: 10
+              paddingTop: 10,
+              elevation: 5
             }}
             >
               <View style={{
@@ -183,14 +214,14 @@ class LinksScreen extends Component {
                 paddingRight: 15,
               }
               }>
-                <TouchableHighlight
+                <TouchableOpacity 
                   onPress={() => {
                     this.setModalVisible(!this.state.modalVisible);
                   }}
                   style={{}}
                 >
                   <Image source={require('../../assets/images/close.png')} />
-                </TouchableHighlight>
+                </TouchableOpacity>
               </View>
               <Item style={{ marginTop: 10, margin: 30, paddingLeft: 20 }}>
                 <Input placeholder="Search"
@@ -212,7 +243,7 @@ export default graphql(DevelopersList, {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     paddingTop: 15,
     backgroundColor: '#fff',
   },

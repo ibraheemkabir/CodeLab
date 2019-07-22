@@ -138,7 +138,6 @@ exports[`renders correctly 1`] = `
           "watches": Set {},
         },
         "client": [Circular],
-        "resolvers": Object {},
       },
       "mutate": [Function],
       "query": [Function],
@@ -285,7 +284,6 @@ exports[`renders correctly 1`] = `
             "watches": Set {},
           },
           "client": [Circular],
-          "resolvers": Object {},
         },
         "mutationStore": MutationStore {
           "store": Object {},

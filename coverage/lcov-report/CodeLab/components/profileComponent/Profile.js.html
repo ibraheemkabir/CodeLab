@@ -186,12 +186,7 @@
 <a name='L138'></a><a href='#L138'>138</a>
 <a name='L139'></a><a href='#L139'>139</a>
 <a name='L140'></a><a href='#L140'>140</a>
-<a name='L141'></a><a href='#L141'>141</a>
-<a name='L142'></a><a href='#L142'>142</a>
-<a name='L143'></a><a href='#L143'>143</a>
-<a name='L144'></a><a href='#L144'>144</a>
-<a name='L145'></a><a href='#L145'>145</a>
-<a name='L146'></a><a href='#L146'>146</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L141'></a><a href='#L141'>141</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -200,8 +195,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -305,9 +298,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -339,7 +329,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
 import { Image, View,StyleSheet,Text } from 'react-native';
 import { Card, CardItem,Button,Icon } from 'native-base';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import {TouchableOpacity } from 'react-native-gesture-handler';
 &nbsp;
 export default class CardImageExample extends Component {
 	render() {
@@ -384,34 +374,31 @@ export default class CardImageExample extends Component {
 				&lt;/View&gt;
 			&lt;/Card&gt;
 				&lt;View style={{marginTop: 60}}&gt;
-					&lt;View style={{ alignItems:'flex-end' }}&gt;
-						&lt;Text style={{
-							fontSize: 22, fontFamily: 'roboto', fontWeight: '600', color: '#47525E', marginTop: -50, paddingRight: 25}}&gt;
-							&lt;TouchableWithoutFeedback id='goToWeb' onPress={() =&gt; navigate('Web', { login: data.node.login })}&gt;
-									&lt;Image source={require('../../assets/images/share-symbol.png')}  /&gt;							
-							&lt;/TouchableWithoutFeedback&gt;
-					&lt;/Text&gt;
-				&lt;/View&gt;
-				&lt;View style={{ alignItems:'center',textAlign:'center'}}&gt;
-					&lt;Text style={{ fontSize: 22, fontFamily: 'roboto', fontWeight: '600', color: '#47525E'}}&gt;
-							{data.node.name}
-						&lt;/Text&gt;
-					&lt;Text style={{ fontSize: 20, fontFamily: 'roboto', fontWeight: '400', color: '#47525E',marginTop: 15 }}&gt;
-							{data.node.bio}
-						&lt;/Text&gt;
-				&lt;/View&gt;
+					&lt;View style={{ alignItems: 'flex-end', fontFamily: 'roboto', fontWeight: '600', marginTop: -50, paddingRight: 25 }}&gt;
+						&lt;TouchableOpacity id="goToWeb" onPress={() =&gt; navigate('Web', { login: data.node.login })}&gt;
+							&lt;Image source={require('../../assets/images/share-symbol.png')}  /&gt;	
+						&lt;/TouchableOpacity&gt;
+					&lt;/View&gt;
+					&lt;View style={{ alignItems:'center',textAlign:'center'}}&gt;
+							&lt;Text style={{ fontSize: 22, fontFamily: 'roboto', fontWeight: '600', color: '#47525E'}}&gt;
+								{data.node.name}
+							&lt;/Text&gt;
+							&lt;Text style={{ fontSize: 20, fontFamily: 'roboto', fontWeight: '400', color: '#47525E',marginTop: 15 }}&gt;
+								{data.node.bio}
+							&lt;/Text&gt;
+					&lt;/View&gt;
 				&lt;/View&gt;
 				&lt;View style={{ marginTop: 30, alignItems: 'center', textAlign: 'center' }}&gt;
 					&lt;View style={{ alignItems: 'center', textAlign: 'center', flexDirection: 'row',margin: 10}}&gt;
 						&lt;Text style={{ fontSize: 20, fontFamily: 'roboto', letterSpacing: 1, fontWeight: '400', color: '#8492A6' }}&gt;
-							&lt;Text style={{ fontSize: 20, fontWeight: '700', color: '#47525E' }}&gt;{data.node.following.totalCount}&lt;/Text&gt;  following
-							&lt;/Text&gt;
+							&lt;Text style={{ fontSize: 20, fontWeight: '700', color: '#47525E' }}&gt;{data.node.following.totalCount}&lt;/Text&gt; following
+						&lt;/Text&gt;
 						&lt;Text style={{ fontSize: 15, fontFamily: 'roboto', fontWeight: '400', color: '#47525E',justifyContent: 'space-around',padding: 10 }}&gt;
 						|
 						&lt;/Text&gt;
 						&lt;Text style={{ fontSize: 20, fontFamily: 'roboto', letterSpacing: 1, fontWeight: '400', color: '#8492A6'}}&gt;
 							&lt;Text style={{ fontSize: 20, fontWeight: '700', color: '#47525E' }}&gt;{data.node.starredRepositories.totalCount}&lt;/Text&gt;  Stars
-							&lt;/Text&gt;
+						&lt;/Text&gt;
 					&lt;/View&gt;
 				&lt;/View&gt;
 			&lt;View style={{
@@ -419,7 +406,6 @@ export default class CardImageExample extends Component {
 				flexDirection: 'column',
 				justifyContent: 'space-between'
 			}}&gt;
-			
 					&lt;View
 						cardBody
 						style={{
@@ -447,7 +433,6 @@ export default class CardImageExample extends Component {
 &nbsp;
 					&lt;/View&gt;
 			&lt;/View&gt;
-			
 		&lt;/View&gt;
 		);
 	}
@@ -464,7 +449,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		},
 		btnText: {
-			fontFamily: 'Droid Sans Mono',
+			fontFamily: 'roboto',
 			flex: 1, 
 			textAlign: 'center', 
 			fontWeight: '700', 
@@ -473,7 +458,7 @@ const styles = StyleSheet.create({
 			letterSpacing: 1,
 		},
 		minibtnText: {
-		fontFamily: 'Droid Sans Mono',
+		fontFamily: 'roboto',
 		flex: 1,
 		textAlign: 'center',
 		fontWeight: '700',
@@ -487,7 +472,7 @@ const styles = StyleSheet.create({
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jul 18 2019 14:36:14 GMT+0100 (West Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jul 22 2019 16:39:36 GMT+0100 (West Africa Standard Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

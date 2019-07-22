@@ -1,4 +1,4 @@
-node_modules/**/*
+node_modules
 .expo/*
 npm-debug.*
 *.jks
@@ -8,5 +8,4 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
-coverage/**/*
-coverage/
+coverage

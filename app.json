@@ -14,8 +14,10 @@
     "icon": "./assets/images/icon.png",
     "splash": {
       "image": "./assets/images/iPhone.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff",
+      "width" : 30,
+      "height" : 30
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -24,8 +26,13 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "ccom.kabir.codelab",
       "supportsTablet": true
     },
+    "android": {
+      "package": "com.kabir.codelab"
+    },
+    "scheme": "myapp",
     "description": "This app helps keep a list of all developers in lagos Nigeria"
   }
 }

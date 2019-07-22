@@ -14,6 +14,6 @@ export default createAppContainer(
    List: ListScreen,
    Profile: ProfileScreen,
    Web: WebView
-  })
+  }, { headerLayoutPreset: 'center' })
 );
 

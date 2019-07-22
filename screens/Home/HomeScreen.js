@@ -44,7 +44,7 @@ class HomeScreen extends Component {
 		try {
 					const token = await getGithubTokenAsync();
 					await AsyncStorage.setItem('GithubStorageKey', token);
-					const viewer = this.props.feedQuery.viewer || null
+					const viewer = this.props.feedQuery.viewer|| null
 					if (token !== null) {
 						this.props.navigation.navigate('List', {
 							itemId: viewer,
@@ -61,29 +61,28 @@ class HomeScreen extends Component {
 		return (
 			<Container>
 				<ImageBackground source={require('../../assets/images/version.png')} style={{ width: '100%', height: '100%' }}>
-					{
-						this.state.loading 
-						&& <View style={{ alignItems: 'center',paddingTop: 10 }}>
-							<Text><Image source={require('../../assets/images/loading.gif')} /></Text>
-							</View>
-					}
-					<Content style={styles.content}>
+					<Content contentContainerStyle={styles.content}>
 						<View style={styles.Image}>
 							<Image
 								source={require('../../assets/images/robot-dev.png')}
-								style={{marginBottom: 15}}
 							/>
 						</View>					
 						<Button 
 						onPress={()=>this.signInAsync()}
 						id= 'btn'
-						style={{ flex: 1, justifyContent: 'center', alignContent: 'center', backgroundColor: '#444444'}}>
+						style={{ justifyContent: 'center', alignContent: 'center', backgroundColor: '#444444'}}>
 							<Icon type='FontAwesome' name='github' fontSize={70} />
 							<Text style={{
 								flex: 1, textAlign: 'center', fontWeight: 'bold', color: 'white',paddingRight:55 }} id='btntext'>
 								Sign In with Github
 							</Text>
 						</Button>
+						{
+							this.state.loading
+							&& <View style={{ alignItems: 'center' }}>
+								<Text><Image source={require('../../assets/images/spinner2.gif')} /></Text>
+							</View>
+						}
 					</Content>
 				</ImageBackground>
 			</Container>
@@ -96,15 +95,14 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignContent: 'center',
 		padding: 20,
-		paddingTop: 220,
-		marginBottom: 200
+		marginBottom: 200,
+		justifyContent: 'center'
 	},
 	Input: {
 		marginBottom: 20,
 		textAlign: 'left'
 	},
 	Image: {
-		flex: 1,
 		alignItems: 'center',
 		padding: 5
 	},

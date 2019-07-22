@@ -12,7 +12,7 @@ export default class Modals extends Component {
 					<View style={{
 						flex: 1, marginTop: 22, height: 30, justifyContent: 'center', alignContent: 'center', alignItems: 'center', shadowColor: 'black',shadowOffset: { height: -4 }}}>
 						<View style={{
-							backgroundColor: 'white', height: 170, width: 400, flexDirection: 'row', justifyContent: 'space-between', justifyContent: 'center', alignContent: 'center', alignItems: 'center', flexDirection: 'column', shadowColor: 'black', shadowOffset: { height: -4 }, shadowOpacity: 0.5}}>
+							backgroundColor: 'black', height: 50, width: 50, flexDirection: 'row', justifyContent: 'space-between', justifyContent: 'center', alignContent: 'center', alignItems: 'center', flexDirection: 'column', shadowColor: 'black', shadowOffset: { height: -4 }, shadowOpacity: 0.5}}>
 							<View style={{
 								flex: 1,
 								justifyContent: 'flex-start',

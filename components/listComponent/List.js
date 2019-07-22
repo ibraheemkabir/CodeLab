@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Content } from 'native-base';
-import { List, ListItem, Left, Body, Right, Thumbnail, Text} from 'native-base';
+import {StyleSheet,Platform} from 'react-native'
+import { Container, Content, List, ListItem, Left, Body, Thumbnail, Text } from 'native-base';
 
 
 export default class ListAvatarExample extends Component {
@@ -12,11 +12,11 @@ export default class ListAvatarExample extends Component {
 	render() {
 		const { navigation,data } = this.props;
 		return (
-			<Container>
+			<Container style={styles.container}>
 				{
 					data &&
 					<Content>
-							<List>
+						<List>
 								{
 									data.map(data=>(
 										<ListItem
@@ -44,3 +44,14 @@ export default class ListAvatarExample extends Component {
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		...Platform.select({
+			android: {
+				height: 500,
+			},
+		}),
+	},
+});

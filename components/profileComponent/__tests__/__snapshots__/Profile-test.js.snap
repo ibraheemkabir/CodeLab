@@ -103,30 +103,21 @@ exports[`renders correctly 1`] = `
       style={
         Object {
           "alignItems": "flex-end",
+          "fontFamily": "roboto",
+          "fontWeight": "600",
+          "marginTop": -50,
+          "paddingRight": 25,
         }
       }
     >
-      <Text
-        style={
-          Object {
-            "color": "#47525E",
-            "fontFamily": "roboto",
-            "fontSize": 22,
-            "fontWeight": "600",
-            "marginTop": -50,
-            "paddingRight": 25,
-          }
-        }
+      <Component
+        id="goToWeb"
+        onPress={[Function]}
       >
-        <Component
-          id="goToWeb"
-          onPress={[Function]}
-        >
-          <Image
-            source={1}
-          />
-        </Component>
-      </Text>
+        <Image
+          source={1}
+        />
+      </Component>
     </View>
     <View
       style={
@@ -198,7 +189,7 @@ exports[`renders correctly 1`] = `
             }
           }
         />
-          following
+         following
       </Text>
       <Text
         style={
@@ -275,7 +266,7 @@ exports[`renders correctly 1`] = `
             Object {
               "color": "#47525E",
               "flex": 1,
-              "fontFamily": "Droid Sans Mono",
+              "fontFamily": "roboto",
               "fontSize": 85,
               "fontWeight": "700",
               "letterSpacing": 1,
@@ -288,7 +279,7 @@ exports[`renders correctly 1`] = `
             Object {
               "color": "#47525E",
               "flex": 1,
-              "fontFamily": "Droid Sans Mono",
+              "fontFamily": "roboto",
               "fontSize": 17,
               "fontWeight": "700",
               "letterSpacing": 1,
@@ -316,7 +307,7 @@ exports[`renders correctly 1`] = `
             Object {
               "color": "#47525E",
               "flex": 1,
-              "fontFamily": "Droid Sans Mono",
+              "fontFamily": "roboto",
               "fontSize": 85,
               "fontWeight": "700",
               "letterSpacing": 1,
@@ -329,7 +320,7 @@ exports[`renders correctly 1`] = `
             Object {
               "color": "#47525E",
               "flex": 1,
-              "fontFamily": "Droid Sans Mono",
+              "fontFamily": "roboto",
               "fontSize": 17,
               "fontWeight": "700",
               "letterSpacing": 1,

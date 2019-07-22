@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">52.63% </span>
+        <span class="strong">58.82% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>10/19</span>
+        <span class='fraction'>10/17</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">33.33% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>3/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">52.63% </span>
+        <span class="strong">58.82% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>10/19</span>
+        <span class='fraction'>10/17</span>
       </div>
     </div>
     <p class="quiet">
@@ -166,7 +166,11 @@
 <a name='L118'></a><a href='#L118'>118</a>
 <a name='L119'></a><a href='#L119'>119</a>
 <a name='L120'></a><a href='#L120'>120</a>
-<a name='L121'></a><a href='#L121'>121</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -193,12 +197,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -206,10 +204,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -221,7 +226,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -237,8 +241,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -254,8 +256,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -287,9 +295,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import { View, StyleSheet, Text, Image, ImageBackground } from 'react-native';
 import getGithubTokenAsync from '../../utils/githubAuth';
-import { Container, Title, Content, Item, Input, Button } from 'native-base';
+import { Container, Title, Content, Icon, Button } from 'native-base';
 import { AsyncStorage } from 'react-native';
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag';
@@ -312,6 +320,8 @@ class LogoTitle extends React.Component {
 		);
 	}
 }
+&nbsp;
+&nbsp;
 class HomeScreen extends Component {
 	static navigationOptions = {
 		headerLeft: &lt;LogoTitle /&gt;,
@@ -329,46 +339,49 @@ class HomeScreen extends Component {
 		this.setState({loading:true})
 		try {
 					const token = await getGithubTokenAsync();
-<span class="cstat-no" title="statement not covered" >					console.log('shoutttttt',this.props)</span>
 <span class="cstat-no" title="statement not covered" >					await AsyncStorage.setItem('GithubStorageKey', token);</span>
 					const viewer = <span class="cstat-no" title="statement not covered" >this.props.feedQuery.viewer || null</span>
 <span class="cstat-no" title="statement not covered" >					if (token !== null) {</span>
 <span class="cstat-no" title="statement not covered" >						this.props.navigation.navigate('List', {</span>
 							itemId: viewer,
 					})
-<span class="cstat-no" title="statement not covered" >					this.setState({loading:false})</span>
+<span class="cstat-no" title="statement not covered" >					this.setState({loading:false})					</span>
 <span class="cstat-no" title="statement not covered" >					return token;</span>
 				}
 		} catch ({ message }) {
 			return message
-<span class="cstat-no" title="statement not covered" >			console.log('hello')</span>
 		}
 	};
 &nbsp;
 	render() {
 		return (
 			&lt;Container&gt;
-				{
-					this.state.loading &amp;&amp; &lt;View style={{ alignItems: 'center',paddingTop: 10 }}&gt;&lt;Text&gt;&lt;Image source={require('../../assets/images/loading.gif')} /&gt;&lt;/Text&gt;&lt;/View&gt;
-				}
-				&lt;Content style={styles.content}&gt;
-					&lt;View style={styles.Image}&gt;
-						&lt;Image
-							source={require('../../assets/images/robot-dev.png')}
-							style={{marginBottom: 15}}
-						/&gt;
-					&lt;/View&gt;					
-					&lt;Button 
-					onPress={()=&gt;this.signInAsync()}
-					id= 'btn'
-					style={{ flex: 1, justifyContent: 'center', alignContent: 'center', backgroundColor: '#E18D96'}}
-					&gt;
-						&lt;Text style={{
-							flex: 1, textAlign: 'center', fontWeight: 'bold', color: 'white' }} id='btntext'&gt;
-							Sign In with Github
-						&lt;/Text&gt;
-					&lt;/Button&gt;
-				&lt;/Content&gt;
+				&lt;ImageBackground source={require('../../assets/images/version.png')} style={{ width: '100%', height: '100%' }}&gt;
+					&lt;Content style={styles.content}&gt;
+						&lt;View style={styles.Image}&gt;
+							&lt;Image
+								source={require('../../assets/images/robot-dev.png')}
+								style={{marginBottom: 15}}
+							/&gt;
+						&lt;/View&gt;					
+						&lt;Button 
+						onPress={()=&gt;this.signInAsync()}
+						id= 'btn'
+						style={{ flex: 1, justifyContent: 'center', alignContent: 'center', backgroundColor: '#444444'}}&gt;
+							&lt;Icon type='FontAwesome' name='github' fontSize={70} /&gt;
+							&lt;Text style={{
+								flex: 1, textAlign: 'center', fontWeight: 'bold', color: 'white',paddingRight:55 }} id='btntext'&gt;
+								Sign In with Github
+							&lt;/Text&gt;
+						&lt;/Button&gt;
+						{
+							this.state.loading
+							&amp;&amp; &lt;View style={{ alignItems: 'center', marginTop: -40 }}&gt;
+								&lt;Text&gt;&lt;Image source={require('../../assets/images/spinner2.gif')} /&gt;&lt;/Text&gt;
+							&lt;/View&gt;
+						}
+					&lt;/Content&gt;
+				&lt;/ImageBackground&gt;
 			&lt;/Container&gt;
 		);
 	}
@@ -377,10 +390,9 @@ class HomeScreen extends Component {
 const styles = StyleSheet.create({
 	content: {
 		flex: 1,
-		justifyContent: 'center',
 		alignContent: 'center',
 		padding: 20,
-		paddingTop: 0,
+		paddingTop: 220,
 		marginBottom: 200
 	},
 	Input: {
@@ -412,7 +424,7 @@ export default graphql(FEED_QUERY, {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jul 18 2019 14:36:14 GMT+0100 (West Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jul 22 2019 16:39:36 GMT+0100 (West Africa Standard Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

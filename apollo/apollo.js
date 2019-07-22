@@ -9,12 +9,13 @@ const makeApolloClient = (token) => {
 	const httpLink = createHttpLink({
 		uri: "https://api.github.com/graphql",
 	});
-
-	const authLink = setContext((_, { headers }) => {
+	
+	const authLink = setContext(async (_, { headers }) => {
+		const stored = await AsyncStorage.getItem('GithubStorageKey')
 		return {
 			headers: {
 				...headers,
-				authorization: `Bearer ${token}`
+				authorization: token ? `Bearer ${token}` : `Bearer ${stored}`
 			}
 		}
 	});
