@@ -37,7 +37,7 @@
     "graphql-tag": "^2.10.1",
     "graphql-tools": "^4.0.5",
     "jest-enzyme": "^7.0.2",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.21",
     "native-base": "^2.12.1",
     "node-fetch": "^2.6.0",
     "prettier": "^1.16.4",
