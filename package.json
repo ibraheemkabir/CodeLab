@@ -28,7 +28,7 @@
     "apollo-link-schema": "^1.2.3",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "expo": "^33.0.0",
+    "expo": "^46.0.16",
     "expo-asset": "^5.0.0",
     "expo-constants": "^5.0.0",
     "expo-font": "~5.0.1",
